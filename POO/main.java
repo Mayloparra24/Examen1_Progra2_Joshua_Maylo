@@ -6,5 +6,5 @@ public class main {
 
         interfaz inter=new interfaz();
         inter.setVisible(true);
-    }
-}
+    }//Fin del main
+}//Fin de la clase
