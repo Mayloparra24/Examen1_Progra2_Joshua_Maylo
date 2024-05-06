@@ -11,7 +11,7 @@ public class interfaz extends JFrame{
     principal=new JPanel();
     add(principal);
       Jframe();
-
+      Detalles();
     }
 
     public void Jframe(){
