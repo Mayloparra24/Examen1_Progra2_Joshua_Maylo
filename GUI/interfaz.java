@@ -10,5 +10,7 @@ public class interfaz extends JFrame{
 
         setSize(1000,700);
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
     }
 }
