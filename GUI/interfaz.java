@@ -3,9 +3,17 @@ package GUI;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import org.w3c.dom.events.MouseEvent;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 public class interfaz extends JFrame{
     
     JPanel principal;
@@ -35,6 +43,7 @@ public class interfaz extends JFrame{
 
       Jframe();
       Detalles();
+      Eventos();
       //Llamado de métodos
     }//Constructor
 
@@ -80,4 +89,26 @@ public class interfaz extends JFrame{
         Titulo.setFont(new Font("Arial", Font.PLAIN, 25));//este método sirve para poner fuente y tamaño de letra
         Titulo.setForeground(Color.WHITE);
     }// este método sirve para dar tamaño y cual detalle a los atributos del GUI
+    public void NuevoPanel(JPanel panel){
+
+        panel.setSize(1000,700);
+        panel.setLocation(0, 0);
+        principal.removeAll();
+        principal.add(panel,BorderLayout.CENTER);
+        principal.repaint();
+        principal.revalidate();
+        
+        
+        
+    }//método para intercambiar paneles
+
+    public void Eventos(){
+        SanRoque.addActionListener(new ActionListener() {
+            
+            public void actionPerformed(ActionEvent e) {
+              NuevoPanel(new Sanroque());
+                
+            }
+        });
+    }//Este método sirve para agregar eventos a los botones
 }//Clase interfaz
