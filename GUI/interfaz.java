@@ -2,14 +2,17 @@ package GUI;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Color;
+import java.awt.Font;
 public class interfaz extends JFrame{
     
     JPanel principal;
     JButton SanRoque, UCR,ElPulmon, AeroPuerto;
-    Color nuevo=new Color(34, 175, 227);
+    Color nuevo=new Color(21, 85, 223);
     Color Boton=new Color(15, 60, 157);
+    JLabel Titulo;
 
     //Creación de atributos y objetos
     public interfaz (){
@@ -18,6 +21,7 @@ public class interfaz extends JFrame{
     UCR=new JButton();
     ElPulmon=new JButton();
     AeroPuerto=new JButton();
+    Titulo=new JLabel();
     //Inicialización de botones y etc
 
     add(principal);
@@ -25,6 +29,7 @@ public class interfaz extends JFrame{
     principal.add(UCR);
     principal.add(ElPulmon);
     principal.add(AeroPuerto);
+    principal.add(Titulo);
     principal.setLayout(null);
     //esta sección de arriba sirve para agregar botones o paneles
 
@@ -69,5 +74,10 @@ public class interfaz extends JFrame{
         AeroPuerto.setBorderPainted(false);
         AeroPuerto.setBackground(Boton);
         AeroPuerto.setForeground(Color.WHITE);
+
+        Titulo.setBounds(300, 10, 600, 50);
+        Titulo.setText("Bienvenido al Sistema de pago rápido");
+        Titulo.setFont(new Font("Arial", Font.PLAIN, 25));//este método sirve para poner fuente y tamaño de letra
+        Titulo.setForeground(Color.WHITE);
     }// este método sirve para dar tamaño y cual detalle a los atributos del GUI
 }//Clase interfaz
