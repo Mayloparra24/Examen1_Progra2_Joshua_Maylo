@@ -109,6 +109,31 @@ public class interfaz extends JFrame{
               NuevoPanel(new Sanroque());
                 
             }
-        });
+        });//Esta acción es del botón San Roque
+        UCR.addActionListener(new ActionListener() {
+            
+            public void actionPerformed(ActionEvent e) {
+              NuevoPanel(new Ucr());
+                
+            }
+        });//Esta acción es del botón UCR
+
+        ElPulmon.addActionListener(new ActionListener() {
+            
+            public void actionPerformed(ActionEvent e) {
+              NuevoPanel(new Pulmon());
+                
+            }
+        });//Esta acción es del botón ElPulmon
+
+        AeroPuerto.addActionListener(new ActionListener() {
+            
+            public void actionPerformed(ActionEvent e) {
+              NuevoPanel(new Aero());
+                
+            }
+        });//Esta acción es del botón AeroPuerto
+
+        
     }//Este método sirve para agregar eventos a los botones
 }//Clase interfaz
