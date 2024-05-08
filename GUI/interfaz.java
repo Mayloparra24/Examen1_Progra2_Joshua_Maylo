@@ -17,7 +17,7 @@ import java.awt.event.MouseAdapter;
 public class interfaz extends JFrame{
     
     JPanel principal;
-    JButton SanRoque, UCR,ElPulmon, AeroPuerto;
+    JButton SanRoque, UCR,ElPulmon, AeroPuerto, Reporte;
     Color nuevo=new Color(21, 85, 223);
     Color Boton=new Color(15, 60, 157);
     JLabel Titulo;
@@ -30,6 +30,7 @@ public class interfaz extends JFrame{
     ElPulmon=new JButton();
     AeroPuerto=new JButton();
     Titulo=new JLabel();
+    Reporte=new JButton();
     //Inicialización de botones y etc
 
     add(principal);
@@ -38,6 +39,7 @@ public class interfaz extends JFrame{
     principal.add(ElPulmon);
     principal.add(AeroPuerto);
     principal.add(Titulo);
+    principal.add(Reporte);
     principal.setLayout(null);
     //esta sección de arriba sirve para agregar botones o paneles
 
@@ -62,6 +64,12 @@ public class interfaz extends JFrame{
         SanRoque.setBorderPainted(false);
         SanRoque.setBackground(Boton);
         SanRoque.setForeground(Color.WHITE);
+        Reporte.setBounds(800, 10, 150, 50);
+        Reporte.setText("Reporte del día");
+        Reporte.setBackground(Boton);
+        Reporte.setForeground(Color.WHITE);
+        Reporte.setFocusPainted(false);
+        Reporte.setBorderPainted(false);
 
         UCR.setBounds(550, 100, 400, 200);
         UCR.setText("UCR");
@@ -133,6 +141,14 @@ public class interfaz extends JFrame{
                 
             }
         });//Esta acción es del botón AeroPuerto
+
+        Reporte.addActionListener(new ActionListener() {
+            
+          public void actionPerformed(ActionEvent e) {
+            NuevoPanel(new Reporte());
+              
+          }
+      });//Esta acción es del botón Reporte para saber el reporte del conductor durante el día
 
         
     }//Este método sirve para agregar eventos a los botones
