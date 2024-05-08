@@ -8,12 +8,15 @@ import javax.swing.JPanel;
 
 import org.w3c.dom.events.MouseEvent;
 
+import POO.Arreglo;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
+import java.lang.reflect.Array;
 public class interfaz extends JFrame{
     
     JPanel principal;
@@ -21,7 +24,7 @@ public class interfaz extends JFrame{
     Color nuevo=new Color(21, 85, 223);
     Color Boton=new Color(15, 60, 157);
     JLabel Titulo;
-
+    static Arreglo[]arreglo=new Arreglo[1];
     //Creación de atributos y objetos
     public interfaz (){
     principal=new JPanel();
@@ -114,6 +117,7 @@ public class interfaz extends JFrame{
         SanRoque.addActionListener(new ActionListener() {
             
             public void actionPerformed(ActionEvent e) {
+              
               NuevoPanel(new Sanroque());
                 
             }

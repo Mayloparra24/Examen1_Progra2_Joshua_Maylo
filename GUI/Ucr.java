@@ -9,6 +9,11 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import POO.Arreglo;
+import POO.ReporteDelDia;
+
+
+
 public class Ucr extends JPanel{
         JButton Efectivo,PagoFacil;
     Color nuevo=new Color(21, 85, 223);
@@ -56,7 +61,7 @@ public class Ucr extends JPanel{
         add(panel,BorderLayout.CENTER);
         repaint();
         revalidate();
-        
+  
         
         
     }//método para intercambiar paneles
@@ -64,6 +69,14 @@ public class Ucr extends JPanel{
         Efectivo.addActionListener(new ActionListener() {
             
             public void actionPerformed(ActionEvent e) {
+                if (interfaz.arreglo[0] != null) {
+                    interfaz.arreglo[0].AgregarEfectivo(500);
+                } else {
+                    
+                    interfaz.arreglo[0] = new Arreglo();
+                   interfaz.arreglo[0].AgregarEfectivo(500);
+                }
+              
               JOptionPane.showMessageDialog(null, "El pasaje es de 500 colones"+"\n"+"Por favor pagar al chofer");
                 NuevoPanel(new interfaz().principal);
             }
@@ -72,6 +85,13 @@ public class Ucr extends JPanel{
         PagoFacil.addActionListener(new ActionListener() {
             
             public void actionPerformed(ActionEvent e) {
+                if (interfaz.arreglo[0] != null) {
+                    interfaz.arreglo[0].AgregarPagoFacil(500);
+                } else {
+                    
+                    interfaz.arreglo[0] = new Arreglo();
+                   interfaz.arreglo[0].AgregarPagoFacil(500);
+                }
               JOptionPane.showMessageDialog(null, "El Pago se ha realizado correctamente");
                 NuevoPanel(new interfaz().principal);
             }

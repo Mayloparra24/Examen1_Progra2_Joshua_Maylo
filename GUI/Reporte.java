@@ -54,6 +54,11 @@ Salir.setFocusPainted(false);
 Salir.setBorderPainted(false);
 Salir.setBackground(Boton);
 Salir.setForeground(Color.WHITE);
+String d="";
+d="Reporte del día en efectivo: "+interfaz.arreglo[0].getEfectivo()+"\n"+
+"Reporte del día en método de pago fácil: "+interfaz.arreglo[0].getPagoFacil()+"\n"+"Reporte total del día en efectivo y pago fácil: "+
+interfaz.arreglo[0].getTotalDia();
+Dato.setText(d);
 
 }//Este método sirve para asignar detalles a los botones o cualquier objeto swing
 
