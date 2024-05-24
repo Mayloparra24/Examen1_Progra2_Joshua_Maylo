@@ -6,7 +6,7 @@ ReporteDelDia reporte=new ReporteDelDia();
 //instancia de la clase ReporteDelDia
 public Arreglo(){
 
-}
+}//Hola mundo
 public void AgregarEfectivo(double efectivo){
 reporte.setEfectivo(efectivo);
 }//Este método sirve para agregar las cantidades en efectivo
