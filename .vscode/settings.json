@@ -1,5 +1,9 @@
 {
     "cSpell.words": [
         "Inicialización"
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\Home\\Documents\\mysql-connector-java-5.1.49.jar"
     ]
 }
