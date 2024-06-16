@@ -7,11 +7,11 @@ import javax.swing.JOptionPane;
 
 public class Conexion {
     static Connection conectar;
-
-    String Usuario = "root";
+    
+    String Usuario = "UsuarioColaborador";
     String Contraseña = "Joshua20000..**";
     String BD = "SistemaPagoAutobus";
-    String IP = "localhost";
+    String IP = "10.153.158.49";
     String Puerto = "3306"; 
 
     String cadena = "jdbc:mysql://" + IP + ":" + Puerto + "/" + BD;
