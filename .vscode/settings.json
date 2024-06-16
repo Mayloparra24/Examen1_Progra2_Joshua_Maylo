@@ -4,6 +4,7 @@
     ],
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "c:\\Users\\Home\\Documents\\mysql-connector-java-5.1.49.jar"
+        "c:\\Users\\Home\\Documents\\mysql-connector-java-5.1.49.jar",
+        "c:\\Users\\a4942\\OneDrive - Universidad de Costa Rica\\III semestre\\Programación II\\mysql-connector-java-5.1.49.jar"
     ]
 }

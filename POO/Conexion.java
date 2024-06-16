@@ -17,15 +17,15 @@ public class Conexion {
     String cadena = "jdbc:mysql://" + IP + ":" + Puerto + "/" + BD;
 
     public Connection EstablecerConexion(){
-
         try{
             Class.forName("com.mysql.jdbc.Driver");
             conectar = DriverManager.getConnection(cadena, Usuario, Contraseña);
-            //JOptionPane.showMessageDialog(null, "Se conecto correctamente a la base de datos");
-
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos" + e.toString());
-        }//
+            // JOptionPane.showMessageDialog(null, "Se conecto correctamente a la base de datos");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error de SQL al conectar con la base de datos: " + e.toString());
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "No se encontró el driver de conexión: " + e.toString());
+        }
         return conectar;
-    }//
+    }
 }//
