@@ -8,6 +8,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 public class AdminPanel extends JFrame{
+    //Atributos
     JTable tabla=new JTable();
     JButton Agregar=new JButton("Agregar");
     JButton Actualizar=new JButton("Actualizar");
@@ -29,11 +30,11 @@ public class AdminPanel extends JFrame{
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
-    }
+    }//Fin del constructor
 
     public void Detalles(){
         Datos.setLayout(null);
         Opciones.setLayout(null);
         Tabla.setLayout(null);
-    }
+    }//Fin del método Detalles
 }
