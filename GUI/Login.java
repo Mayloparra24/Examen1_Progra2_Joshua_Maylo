@@ -18,7 +18,7 @@ public class Login extends JFrame{
     private JTextField tfUsuario;
     private JPasswordField pfContraseña;
     private JLabel Lbusuario, LbContraseña;
-    private JButton btnIniciar, btnCancelar;
+    private JButton btnIniciar, btnCancelar, Creditos;
     JPanel panel = new PanelConFondo("/Imagenes/Fondo3.jpg");
     public Login(){
 
@@ -58,7 +58,10 @@ public void eventos(){
     btnCancelar = new JButton("Cancelar");
     btnCancelar.setBounds(390, 300, 150, 35); 
     panel.add(btnCancelar);
-
+    
+    Creditos = new JButton("Derechos de autor");
+    Creditos.setBounds(610, 500, 150, 35);
+    panel.add(Creditos);
 
     btnIniciar.addActionListener(new ActionListener() {
         @Override
@@ -67,6 +70,15 @@ public void eventos(){
             POO.CLogin objetLogin = new POO.CLogin();
             objetLogin.Validacion(tfUsuario, pfContraseña);
             
+        }
+    });
+
+    Creditos.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          Derechos ventana = new Derechos();
+          ventana.setVisible(true);
+          
         }
     });
 
