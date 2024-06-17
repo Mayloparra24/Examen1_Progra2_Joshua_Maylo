@@ -6,7 +6,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import java.awt.GridLayout; 
+
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -18,50 +19,58 @@ public class Login extends JFrame{
     private JPasswordField pfContraseña;
     private JLabel Lbusuario, LbContraseña;
     private JButton btnIniciar, btnCancelar;
-
+    JPanel panel = new PanelConFondo("/Imagenes/Fondo3.jpg");
     public Login(){
 
         setTitle("Ventana de inicio de seccion");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(null);
-       
+        
+       add(panel);
+       panel.setLayout(null);
+       eventos();
 
         
-        Lbusuario = new JLabel("Ingrese el nombre usuario:");
-        Lbusuario.setBounds(10, 20, 200, 35);
-        add(Lbusuario);
 
-        tfUsuario = new JTextField();
-        tfUsuario.setBounds(210, 20, 300, 35);
-        add(tfUsuario);
-
-        LbContraseña = new JLabel("Ingrese la contraseña:");
-        LbContraseña.setBounds(10, 70, 200, 35); 
-        add(LbContraseña);
-
-        pfContraseña = new JPasswordField();
-        pfContraseña.setBounds(210, 70, 300, 35); 
-        add(pfContraseña);
-
-        btnIniciar = new JButton("Iniciar sesión");
-        btnIniciar.setBounds(150, 120, 150, 35); 
-        add(btnIniciar);
-
-        btnCancelar = new JButton("Cancelar");
-        btnCancelar.setBounds(310, 120, 150, 35); 
-        add(btnCancelar);
-
-
-        btnIniciar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               
-                POO.CLogin objetLogin = new POO.CLogin();
-                objetLogin.Validacion(tfUsuario, pfContraseña);
-                
-            }
-        });
     }//
+public void eventos(){
+    Lbusuario = new JLabel("Ingrese el nombre usuario:");
+    Lbusuario.setBounds(240, 130, 200, 35);
+    Lbusuario.setForeground(Color.WHITE);
+    panel.add(Lbusuario);
+
+    tfUsuario = new JTextField();
+    tfUsuario.setBounds(240, 160, 300, 35);
+    panel.add(tfUsuario);
+
+    LbContraseña = new JLabel("Ingrese la contraseña:");
+    LbContraseña.setBounds(240, 210, 200, 35); 
+    LbContraseña.setForeground(Color.WHITE);
+    panel.add(LbContraseña);
+
+    pfContraseña = new JPasswordField();
+    pfContraseña.setBounds(240, 240, 300, 35); 
+    panel.add(pfContraseña);
+
+    btnIniciar = new JButton("Iniciar sesión");
+    btnIniciar.setBounds(240, 300, 150, 35); 
+    panel.add(btnIniciar);
+
+    btnCancelar = new JButton("Cancelar");
+    btnCancelar.setBounds(390, 300, 150, 35); 
+    panel.add(btnCancelar);
+
+
+    btnIniciar.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+           
+            POO.CLogin objetLogin = new POO.CLogin();
+            objetLogin.Validacion(tfUsuario, pfContraseña);
+            
+        }
+    });
+
+}
 
 
     public static void main(String[] args) {

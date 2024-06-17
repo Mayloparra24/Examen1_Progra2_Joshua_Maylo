@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JOptionPane;
+
+import GUI.AdminPanel;
 import GUI.VentanaJefe;
 import GUI.interfaz;
 
@@ -39,7 +41,7 @@ public class CLogin {
                     ventana.setLocationRelativeTo(null);
                 } else if (user.equals("AdminJefe") && contra.equals("admin123")) {
                     JOptionPane.showMessageDialog(null, "Bienvenido al sistema Admin Jefe");
-                    VentanaJefe ventana = new VentanaJefe();
+                    AdminPanel ventana = new AdminPanel();
                     ventana.setVisible(true);
                     ventana.setLocationRelativeTo(null);
                 }

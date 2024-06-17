@@ -19,9 +19,9 @@ public class VentanaJefe extends JFrame{
      }//
 
      public void IniciarComponentes(){
-         JPanel panel = new JPanel(new GridLayout(3, 2, 10, 10));
-         LbMensaje = new JLabel("Hola, soy un JLbael");
-        panel.add(LbMensaje);
-        add(panel);
+         JPanel panel = new JPanel();
+         panel.setLayout(null);
+        panel.add(new AdminPanel());
+        
      }//
 }//

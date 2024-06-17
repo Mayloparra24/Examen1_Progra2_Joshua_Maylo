@@ -1,5 +1,9 @@
 package GUI;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -23,6 +27,7 @@ public class AdminPanel extends JFrame{
     JPanel Datos = new JPanel();
     JPanel Opciones = new JPanel();
     JPanel Tabla = new JPanel();
+    JPanel Principal = new PanelConFondo("/Imagenes/Fondo3.jpg");
 
     
     public AdminPanel(){
@@ -30,11 +35,20 @@ public class AdminPanel extends JFrame{
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
+        
+        add(Principal);
+        Detalles();
+        
     }//Fin del constructor
 
     public void Detalles(){
         Datos.setLayout(null);
         Opciones.setLayout(null);
         Tabla.setLayout(null);
+        Principal.setLayout(null);
+        Principal.setBackground(Color.red);
     }//Fin del método Detalles
-}
+
+    
+    }
+
