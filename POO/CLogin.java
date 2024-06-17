@@ -36,6 +36,7 @@ public class CLogin {
             if (rs.next()) {
                 if (user.equals("Adminbus") && contra.equals("admin321")) {
                     JOptionPane.showMessageDialog(null, "Bienvenido a el sistema Admin bus");
+                    
                     interfaz ventana = new interfaz();
                     ventana.setVisible(true);
                     ventana.setLocationRelativeTo(null);

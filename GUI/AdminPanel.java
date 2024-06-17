@@ -1,15 +1,27 @@
 package GUI;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.sql.ResultSet;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
+import org.w3c.dom.events.MouseEvent;
+
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
 
 
 public class AdminPanel extends JFrame{
@@ -17,9 +29,8 @@ public class AdminPanel extends JFrame{
 
     Color colorPanel = new Color(234, 235, 237);
     String[] nombresColumnas = {"Usuario", "Contraseña", "Nombre1", "Nombre2", "Apellido1", "Apellido2", "Cédula", "Placa del Autobus"};
-    
-    
-    JTable tabla=new JTable();
+    DefaultTableModel modelo = new DefaultTableModel(nombresColumnas, 0);
+    JTable tabla=new JTable(modelo);
     JButton Agregar=new JButton("Agregar");
     JButton Actualizar=new JButton("Actualizar");
     JButton Eliminar=new JButton("Eliminar");
@@ -53,6 +64,8 @@ public class AdminPanel extends JFrame{
         
         add(Principal);
         Detalles();
+        eventos();
+        cargarDatosDesdeBaseDeDatos();
         
     }//Fin del constructor
 
@@ -88,10 +101,11 @@ public class AdminPanel extends JFrame{
         Datos.add(Eliminar);
         Datos.add(Regresar);
 
-        Tabla.add(tabla);
-        Tabla.setBounds(15, 330, 960, 330);
+        JScrollPane scrollPane = new JScrollPane(tabla);
+        Tabla.add(scrollPane);
+        Tabla.setBounds(15, 360, 960, 300);
         Tabla.setBackground(colorPanel);
-        tabla.setBounds(0, 0, 960, 250);
+        scrollPane.setBounds(0, 0, 960, 250);
 
         Usuario.setBounds(10, 10, 100, 30);
         TUsuario.setBounds(140, 10, 200, 30);
@@ -116,7 +130,114 @@ public class AdminPanel extends JFrame{
 
 
 
-    }//Fin del método Detalles
+    }//fin del método Detalles
+    public void cargarDatosDesdeBaseDeDatos() {
+    try {
+        // 1. Establecer conexión
+        POO.Conexion objetoconexion = new POO.Conexion();
+        Connection con;
+        con = (Connection) objetoconexion.EstablecerConexion();
+        
+        // 2. Ejecutar consulta SQL
+        String consulta = "SELECT Usuario, Contraseña, Nombre1, Nombre2, Apellido1, Apellido2, Cédula, PlacaDelAutobus FROM tuTabla"; // Asegúrate de cambiar "tuTabla" por el nombre real de tu tabla
+        PreparedStatement ps;
+        ps = (PreparedStatement) con.prepareStatement(consulta);
+        ResultSet rs = ps.executeQuery();
+        
+        // 3. Llenar el DefaultTableModel
+        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+        modelo.setRowCount(0); // Limpiar el modelo para evitar duplicados
+        
+        while (rs.next()) {
+            Object[] fila = new Object[8]; // Ajusta el tamaño del arreglo según el número de columnas
+            fila[0] = rs.getString("Usuario");
+            fila[1] = rs.getString("Contraseña");
+            fila[2] = rs.getString("Nombre1");
+            fila[3] = rs.getString("Nombre2");
+            fila[4] = rs.getString("Apellido1");
+            fila[5] = rs.getString("Apellido2");
+            fila[6] = rs.getString("Cédula");
+            fila[7] = rs.getString("PlacaDelAutobus");
+            modelo.addRow(fila);
+        }
+        
+        // 4. Asignar el modelo a la JTable
+        tabla.setModel(modelo);
+        
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+public void eventos(){
+    Agregar.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String[] datos = {
+                TUsuario.getText(),
+                TContraseña.getText(),
+                TNombre1.getText(),
+                TNombre2.getText(),
+                TApellido1.getText(),
+                TApellido2.getText(),
+                TCedula.getText(),
+                TAutoBus.getText()
+            };
+            modelo.addRow(datos);
+            clearTextFields();
+        }
+    });
+
+            Actualizar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedRow = tabla.getSelectedRow();
+                if (selectedRow >= 0) {
+                    modelo.setValueAt(TUsuario.getText(), selectedRow, 0);
+                    modelo.setValueAt(TContraseña.getText(), selectedRow, 1);
+                    modelo.setValueAt(TNombre1.getText(), selectedRow, 2);
+                    modelo.setValueAt(TNombre2.getText(), selectedRow, 3);
+                    modelo.setValueAt(TApellido1.getText(), selectedRow, 4);
+                    modelo.setValueAt(TApellido2.getText(), selectedRow, 5);
+                    modelo.setValueAt(TCedula.getText(), selectedRow, 6);
+                    modelo.setValueAt(TAutoBus.getText(), selectedRow, 7);
+                    clearTextFields();
+                }
+            }
+        });
+
+        Eliminar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedRow = tabla.getSelectedRow();
+                if (selectedRow >= 0) {
+                    modelo.removeRow(selectedRow);
+                    clearTextFields();
+                }
+            }
+        });
+
+        Regresar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                Login ventana = new Login();
+                ventana.setBounds(0, 0, 800, 600);
+                ventana.setLocationRelativeTo(null);
+                ventana.setVisible(true);
+            }
+        });
+
+}
+    private void clearTextFields() {
+        TUsuario.setText("");
+        TContraseña.setText("");
+        TNombre1.setText("");
+        TNombre2.setText("");
+        TApellido1.setText("");
+        TApellido2.setText("");
+        TCedula.setText("");
+        TAutoBus.setText("");
+    }
 
     
     }

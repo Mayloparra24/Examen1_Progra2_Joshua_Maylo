@@ -66,7 +66,7 @@ public void eventos(){
     btnIniciar.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-           
+            dispose();
             POO.CLogin objetLogin = new POO.CLogin();
             objetLogin.Validacion(tfUsuario, pfContraseña);
             
