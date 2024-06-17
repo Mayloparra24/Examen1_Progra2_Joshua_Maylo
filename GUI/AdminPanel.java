@@ -54,7 +54,7 @@ public class AdminPanel extends JFrame{
     JPanel Datos = new JPanel();
     JPanel Tabla = new JPanel();
     JPanel Principal = new PanelConFondo("/Imagenes/Fondo3.jpg");
-
+    
     
     public AdminPanel(){
         setSize(1000,700);
@@ -224,10 +224,10 @@ public void eventos(){
                 ventana.setBounds(0, 0, 800, 600);
                 ventana.setLocationRelativeTo(null);
                 ventana.setVisible(true);
-            }
+            }//
         });
 
-}
+}//
     private void clearTextFields() {
         TUsuario.setText("");
         TContraseña.setText("");
@@ -237,8 +237,5 @@ public void eventos(){
         TApellido2.setText("");
         TCedula.setText("");
         TAutoBus.setText("");
-    }
-
-    
-    }
-
+    }//
+    }//

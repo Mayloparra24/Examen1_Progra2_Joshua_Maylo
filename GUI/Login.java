@@ -78,6 +78,7 @@ public void eventos(){
         public void actionPerformed(ActionEvent e) {
           Derechos ventana = new Derechos();
           ventana.setVisible(true);
+          dispose();
           
         }
     });

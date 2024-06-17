@@ -1,5 +1,6 @@
 package GUI;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -7,6 +8,8 @@ import java.awt.GridLayout;
 
 public class VentanaJefe extends JFrame{
      private JLabel LbMensaje;
+      
+     
 
      public VentanaJefe(){
         setTitle("Bienvenido a la ventana de Jefe");

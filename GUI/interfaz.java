@@ -24,6 +24,7 @@ public class interfaz extends JFrame{
     Color nuevo=new Color(21, 85, 223);
     Color Boton=new Color(15, 60, 157);
     JLabel Titulo;
+    JButton Regresar = new JButton("Regresar");
     static Arreglo[]arreglo=new Arreglo[1];
     //Creación de atributos y objetos
     public interfaz (){
@@ -43,6 +44,7 @@ public class interfaz extends JFrame{
     principal.add(AeroPuerto);
     principal.add(Titulo);
     principal.add(Reporte);
+    principal.add(Regresar);
     principal.setLayout(null);
     //esta sección de arriba sirve para agregar botones o paneles
 
@@ -67,6 +69,7 @@ public class interfaz extends JFrame{
         SanRoque.setBorderPainted(false);
         SanRoque.setBackground(Boton);
         SanRoque.setForeground(Color.WHITE);
+
         Reporte.setBounds(800, 10, 150, 50);
         Reporte.setText("Reporte del día");
         Reporte.setBackground(Boton);
@@ -99,6 +102,13 @@ public class interfaz extends JFrame{
         Titulo.setText("Bienvenido al Sistema de pago rápido");
         Titulo.setFont(new Font("Arial", Font.PLAIN, 25));//este método sirve para poner fuente y tamaño de letra
         Titulo.setForeground(Color.WHITE);
+
+        Regresar.setBounds(400, 400, 200, 70);
+        Regresar.setFocusPainted(false);
+        Regresar.setBorderPainted(false);
+        Regresar.setBackground(Boton);
+        Regresar.setForeground(Color.WHITE);
+
     }// este método sirve para dar tamaño y cual detalle a los atributos del GUI
     public void NuevoPanel(JPanel panel){
 
@@ -108,9 +118,7 @@ public class interfaz extends JFrame{
         principal.add(panel,BorderLayout.CENTER);
         principal.repaint();
         principal.revalidate();
-        
-        
-        
+
     }//método para intercambiar paneles
 
     public void Eventos(){
@@ -154,6 +162,15 @@ public class interfaz extends JFrame{
           }
       });//Esta acción es del botón Reporte para saber el reporte del conductor durante el día
 
-        
+        Regresar.addActionListener(new ActionListener() {
+            
+          public void actionPerformed(ActionEvent e) {
+            Login v = new Login();
+            v.setVisible(true);
+            v.setBounds(0, 0, 800, 600);
+            v.setLocationRelativeTo(null);
+            dispose();
+          }
+        });
     }//Este método sirve para agregar eventos a los botones
 }//Clase interfaz
