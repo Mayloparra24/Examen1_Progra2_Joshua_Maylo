@@ -18,12 +18,22 @@ public class AdminPanel extends JFrame{
     JButton Actualizar=new JButton("Actualizar");
     JButton Eliminar=new JButton("Eliminar");
     JButton Regresar=new JButton("Regresar");
-    JLabel Usuario=new JLabel("Usuario");
-    JLabel Contraseña=new JLabel("Contraseña");
-    JLabel AutoBus=new JLabel("Autobus");
+    JLabel Usuario=new JLabel("Usuario: ");
+    JLabel Contraseña=new JLabel("Contraseña: ");
+    JLabel AutoBus=new JLabel("Placa del Autobus: ");
+    JLabel Nombre1 = new JLabel("Primer nombre: ");
+    JLabel Nombre2 = new JLabel("Segundo nombre: ");
+    JLabel Apellido1 = new JLabel("Primer apellido: ");
+    JLabel Apellido2 = new JLabel("Segundo apellido: ");
+    JLabel Cedula = new JLabel("Cédula: ");
     JTextField TUsuario=new JTextField();
     JTextField TContraseña=new JTextField();
     JTextField TAutoBus=new JTextField();
+    JTextField TNombre1 = new JTextField();
+    JTextField TNombre2 = new JTextField();
+    JTextField TApellido1 = new JTextField();
+    JTextField TApellido2 = new JTextField();
+    JTextField TCedula = new JTextField();
     JPanel Datos = new JPanel();
     JPanel Opciones = new JPanel();
     JPanel Tabla = new JPanel();
@@ -47,6 +57,9 @@ public class AdminPanel extends JFrame{
         Tabla.setLayout(null);
         Principal.setLayout(null);
         Principal.setBackground(Color.red);
+        Principal.add(Datos);
+        Datos.setBounds(20, 0, 960, 250);
+        Datos.setBackground(Color.red);
     }//Fin del método Detalles
 
     
