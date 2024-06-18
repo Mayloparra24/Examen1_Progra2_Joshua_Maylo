@@ -1,6 +1,7 @@
 {
     "cSpell.words": [
-        "Inicialización"
+        "Inicialización",
+        "objetoconexion"
     ],
     "java.project.referencedLibraries": [
         "lib/**/*.jar",

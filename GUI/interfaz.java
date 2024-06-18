@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 
 import org.w3c.dom.events.MouseEvent;
 
-import POO.Arreglo;
+
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -25,7 +25,6 @@ public class interfaz extends JFrame{
     Color Boton=new Color(15, 60, 157);
     JLabel Titulo;
     JButton Regresar = new JButton("Regresar");
-    static Arreglo[]arreglo=new Arreglo[1];
     //Creación de atributos y objetos
     public interfaz (){
     principal=new JPanel();

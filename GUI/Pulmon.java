@@ -4,12 +4,16 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import POO.Arreglo;
+import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.Statement;
+
+
 
 
 
@@ -68,34 +72,51 @@ public class Pulmon extends JPanel {
         
     }//método para intercambiar paneles
     public void eventos(){
-        Efectivo.addActionListener(new ActionListener() {
-            
+        ActionListener accion = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                              if (interfaz.arreglo[0] != null) {
-                    interfaz.arreglo[0].AgregarEfectivo(500);
-                } else {
+                POO.Conexion objetoconexion = new POO.Conexion();
+                // Consultas para obtener el valor actual no necesitan cambiar
+                String consultaObtenerEfectivo = "SELECT efectivo FROM tabla WHERE condicion='algunaCondicion';";
+                String consultaObtenerPagoFacil = "SELECT pagoFacil FROM tabla WHERE condicion='algunaCondicion';";
+                // Consultas para actualizar el valor específico según el botón presionado
+                String consultaActualizarEfectivo = "UPDATE tabla SET efectivo=? WHERE condicion='algunaCondicion';";
+                String consultaActualizarPagoFacil = "UPDATE tabla SET pagoFacil=? WHERE condicion='algunaCondicion';";
+                try {
+                    Statement stmt = (Statement)objetoconexion.EstablecerConexion().createStatement();
+                    ResultSet rs;
+                    int valorActual;
+                    String consultaActualizar;
                     
-                    interfaz.arreglo[0] = new Arreglo();
-                   interfaz.arreglo[0].AgregarEfectivo(500);
-                }
-              JOptionPane.showMessageDialog(null, "El pasaje es de 500 colones"+"\n"+"Por favor pagar al chofer");
-                NuevoPanel(new interfaz().principal);
-            }
-        });
-
-        PagoFacil.addActionListener(new ActionListener() {
-            
-            public void actionPerformed(ActionEvent e) {
-                if (interfaz.arreglo[0] != null) {
-                    interfaz.arreglo[0].AgregarPagoFacil(500);
-                } else {
+                    if(e.getSource() == Efectivo){
+                        rs = stmt.executeQuery(consultaObtenerEfectivo);
+                        consultaActualizar = consultaActualizarEfectivo;
+                    } else { // PagoFacil
+                        rs = stmt.executeQuery(consultaObtenerPagoFacil);
+                        consultaActualizar = consultaActualizarPagoFacil;
+                    }
                     
-                    interfaz.arreglo[0] = new Arreglo();
-                   interfaz.arreglo[0].AgregarPagoFacil(500);
+                    if(rs.next()){
+                        valorActual = rs.getInt(1); // Obtiene el primer campo del resultado
+                        int nuevoValor = valorActual + 500;
+                        
+                        PreparedStatement pstmt = (PreparedStatement)objetoconexion.EstablecerConexion().prepareStatement(consultaActualizar);
+                        pstmt.setInt(1, nuevoValor);
+                        pstmt.executeUpdate();
+                        
+                        if(e.getSource() == Efectivo){
+                            JOptionPane.showMessageDialog(null, "El pasaje es de 500 colones"+"\n"+"Por favor pagar al chofer");
+                        } else { // PagoFacil
+                            JOptionPane.showMessageDialog(null, "El Pago se ha realizado correctamente");
+                        }
+                        NuevoPanel(new interfaz().principal);
+                    }
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Error al actualizar la base de datos: " + ex.toString());
                 }
-              JOptionPane.showMessageDialog(null, "El Pago se ha realizado correctamente");
-                NuevoPanel(new interfaz().principal);
             }
-        });
+        };
+        
+        Efectivo.addActionListener(accion);
+        PagoFacil.addActionListener(accion);
     }
 }
