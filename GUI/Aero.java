@@ -74,7 +74,7 @@ public class Aero extends JPanel {
         ActionListener accion = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 POO.Conexion objetoconexion = new POO.Conexion();
-                
+                //ghggh
                 String consultaObtenerEfectivo = "SELECT efectivo FROM tabla WHERE condicion='algunaCondicion';";
                 String consultaObtenerPagoFacil = "SELECT pagoFacil FROM tabla WHERE condicion='algunaCondicion';";
                 
