@@ -75,10 +75,10 @@ public class Pulmon extends JPanel {
         ActionListener accion = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 POO.Conexion objetoconexion = new POO.Conexion();
-                // Consultas para obtener el valor actual no necesitan cambiar
+               
                 String consultaObtenerEfectivo = "SELECT efectivo FROM tabla WHERE condicion='algunaCondicion';";
                 String consultaObtenerPagoFacil = "SELECT pagoFacil FROM tabla WHERE condicion='algunaCondicion';";
-                // Consultas para actualizar el valor específico según el botón presionado
+                
                 String consultaActualizarEfectivo = "UPDATE tabla SET efectivo=? WHERE condicion='algunaCondicion';";
                 String consultaActualizarPagoFacil = "UPDATE tabla SET pagoFacil=? WHERE condicion='algunaCondicion';";
                 try {
@@ -90,13 +90,13 @@ public class Pulmon extends JPanel {
                     if(e.getSource() == Efectivo){
                         rs = stmt.executeQuery(consultaObtenerEfectivo);
                         consultaActualizar = consultaActualizarEfectivo;
-                    } else { // PagoFacil
+                    } else { 
                         rs = stmt.executeQuery(consultaObtenerPagoFacil);
                         consultaActualizar = consultaActualizarPagoFacil;
                     }
                     
                     if(rs.next()){
-                        valorActual = rs.getInt(1); // Obtiene el primer campo del resultado
+                        valorActual = rs.getInt(1);
                         int nuevoValor = valorActual + 500;
                         
                         PreparedStatement pstmt = (PreparedStatement)objetoconexion.EstablecerConexion().prepareStatement(consultaActualizar);
@@ -105,7 +105,7 @@ public class Pulmon extends JPanel {
                         
                         if(e.getSource() == Efectivo){
                             JOptionPane.showMessageDialog(null, "El pasaje es de 500 colones"+"\n"+"Por favor pagar al chofer");
-                        } else { // PagoFacil
+                        } else { 
                             JOptionPane.showMessageDialog(null, "El Pago se ha realizado correctamente");
                         }
                         NuevoPanel(new interfaz().principal);
