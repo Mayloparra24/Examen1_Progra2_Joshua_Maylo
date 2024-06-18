@@ -100,7 +100,7 @@ public class Ucr extends JPanel{
                             JOptionPane.showMessageDialog(null, "El pasaje es de 500 colones"+"\n"+"Por favor pagar al chofer");
                         } else { 
                             JOptionPane.showMessageDialog(null, "El Pago se ha realizado correctamente");
-                        }
+                        }//dgdg
                         NuevoPanel(new interfaz().principal);
                     }
                 } catch (Exception ex) {
