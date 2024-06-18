@@ -25,7 +25,7 @@ public class Login extends JFrame {
         add(panel);
         panel.setLayout(null);
         eventos();
-    }
+    }//fin del constructor
 
     public void eventos() {
         Lbusuario = new JLabel("Ingrese el nombre usuario:");
@@ -81,5 +81,6 @@ public class Login extends JFrame {
         ventana.setBounds(0, 0, 800, 600);
         ventana.setLocationRelativeTo(null);
         ventana.setVisible(true);
+       
     }
 }//

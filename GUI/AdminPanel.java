@@ -4,7 +4,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.FileInputStream;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -179,7 +183,11 @@ public class AdminPanel extends JFrame {
         Actualizar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ActualizarUsuario(TCedula, TNombre1, TNombre2, TApellido1, TApellido2, TUsuario, TContraseña);
+
                 int selectedRow = tabla.getSelectedRow();
+
+                ActualizarUsuario(TCedula, TNombre1, TNombre2, TApellido1, TApellido2, TUsuario, TContraseña);
                 if (selectedRow >= 0) {
                     modelo.setValueAt(TCedula.getText(), selectedRow, 0);
                     modelo.setValueAt(TNombre1.getText(), selectedRow, 1);
@@ -212,6 +220,22 @@ public class AdminPanel extends JFrame {
                 ventana.setBounds(0, 0, 800, 600);
                 ventana.setLocationRelativeTo(null);
                 ventana.setVisible(true);
+            }
+        });
+
+        tabla.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int selectedRow = tabla.getSelectedRow();
+                if (selectedRow >= 0) {
+                    TCedula.setText(modelo.getValueAt(selectedRow, 0).toString());
+                    TNombre1.setText(modelo.getValueAt(selectedRow, 1).toString());
+                    TNombre2.setText(modelo.getValueAt(selectedRow, 2).toString());
+                    TApellido1.setText(modelo.getValueAt(selectedRow, 3).toString());
+                    TApellido2.setText(modelo.getValueAt(selectedRow, 4).toString());
+                    TUsuario.setText(modelo.getValueAt(selectedRow, 5).toString());
+                    TContraseña.setText(modelo.getValueAt(selectedRow, 6).toString());
+                }
             }
         });
 
@@ -249,5 +273,51 @@ public class AdminPanel extends JFrame {
             JOptionPane.showMessageDialog(null, "Error al agregar usuario" + e.toString());
         }
 }// fin del método AgregarUsuario
+
+
+
+    public void Seleccionar( JTable tabla, JTextField TCedula, JTextField TNombre1, JTextField TNombre2, JTextField TApellido1, JTextField TApellido2, JTextField TUsuario, JTextField TContraseña) {
+
+        int selectedRow = tabla.getSelectedRow();
+
+        if (selectedRow>=0){
+            TCedula.setText(tabla.getValueAt(selectedRow, 0).toString());
+            TNombre1.setText(tabla.getValueAt(selectedRow, 1).toString());
+            TNombre2.setText(tabla.getValueAt(selectedRow, 2).toString());
+            TApellido1.setText(tabla.getValueAt(selectedRow, 3).toString());
+            TApellido2.setText(tabla.getValueAt(selectedRow, 4).toString());
+            TUsuario.setText(tabla.getValueAt(selectedRow, 5).toString());
+            TContraseña.setText(tabla.getValueAt(selectedRow, 6).toString());
+
+            
+
+        }
+    }// fin del método Seleccionar
+
+
+
+    public void ActualizarUsuario(JTextField TCedula, JTextField TNombre1, JTextField TNombre2, JTextField TApellido1, JTextField TApellido2, JTextField TUsuario, JTextField TContraseña) {
+        
+        POO.Conexion objetoconexion = new POO.Conexion();
+        String consulta = "UPDATE usuarios SET cedula=?, nombre1=?, nombre2=?, apellido1=?, apellido2=?, login=?, clave=? WHERE cedula=?;";
+
+        try {
+
+            CallableStatement call = (CallableStatement) objetoconexion.EstablecerConexion().prepareCall(consulta);
+            call.setString(1, TCedula.getText());
+            call.setString(2, TNombre1.getText());
+            call.setString(3, TNombre2.getText());
+            call.setString(4, TApellido1.getText());
+            call.setString(5, TApellido2.getText());
+            call.setString(6, TUsuario.getText());
+            call.setString(7, TContraseña.getText());
+            call.setString(8, TCedula.getText());
+            call.execute();
+
+            JOptionPane.showMessageDialog(null, "Usuario actualizado");
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar usuario" + e.toString());
+        }
+    }//
 
 }// fin de la clase AdminPanel

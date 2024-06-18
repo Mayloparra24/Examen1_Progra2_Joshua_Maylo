@@ -11,8 +11,6 @@ import javax.swing.JPanel;
 
 import POO.Arreglo;
 
-
-
 public class Sanroque extends JPanel {
     JButton Efectivo,PagoFacil;
     Color nuevo=new Color(21, 85, 223);
