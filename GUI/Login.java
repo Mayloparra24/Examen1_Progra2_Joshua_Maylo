@@ -63,6 +63,7 @@ public class Login extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 POO.CLogin objetLogin = new POO.CLogin();
                 objetLogin.Validacion(tfUsuario, pfContraseña);
+                dispose();
             }
         });
 

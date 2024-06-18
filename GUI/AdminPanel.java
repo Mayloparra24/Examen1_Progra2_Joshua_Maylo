@@ -1,7 +1,6 @@
 package GUI;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -103,23 +102,45 @@ public class AdminPanel extends JFrame {
 
         Cedula.setBounds(10, 10, 100, 30);
         TCedula.setBounds(140, 10, 200, 30);
+        TCedula.setBorder(new Borde(15));
+        TCedula.setOpaque(false);
         Nombre1.setBounds(10, 50, 100, 30);
         TNombre1.setBounds(140, 50, 200, 30);
+        TNombre1.setBorder(new Borde(15));
+        TNombre1.setOpaque(false);
         Nombre2.setBounds(10, 90, 120, 30);
         TNombre2.setBounds(140, 90, 200, 30);
+        TNombre2.setBorder(new Borde(15));
+        TNombre2.setOpaque(false);
         Apellido1.setBounds(10, 130, 100, 30);
         TApellido1.setBounds(140, 130, 200, 30);
+        TApellido1.setBorder(new Borde(15));
+        TApellido1.setOpaque(false);
         Apellido2.setBounds(10, 170, 120, 30);
         TApellido2.setBounds(140, 170, 200, 30);
+        TApellido2.setBorder(new Borde(15));
+        TApellido2.setOpaque(false);
         Login.setBounds(10, 210, 100, 30);
         TUsuario.setBounds(140, 210, 200, 30);
+        TUsuario.setBorder(new Borde(15));
+        TUsuario.setOpaque(false);
         Contraseña.setBounds(10, 250, 100, 30);
         TContraseña.setBounds(140, 250, 200, 30);
+        TContraseña.setBorder(new Borde(15));
+        TContraseña.setOpaque(false);
 
         Agregar.setBounds(400, 290, 100, 30);
+        Agregar.setContentAreaFilled(false);
+        Agregar.setBackground(Color.white);
         Actualizar.setBounds(515, 290, 100, 30);
+        Actualizar.setContentAreaFilled(false);
+        Actualizar.setBackground(Color.white);
         Eliminar.setBounds(630, 290, 100, 30);
-        Regresar.setBounds(745, 290, 100, 30);
+        Eliminar.setContentAreaFilled(false);
+        Eliminar.setBackground(Color.white);
+        Regresar.setBounds(745, 290, 100, 30); 
+        Regresar.setContentAreaFilled(false);
+        Regresar.setBackground(Color.white);
     } // fin del método Detalles
 
     public void cargarDatosDesdeBaseDeDatos() {

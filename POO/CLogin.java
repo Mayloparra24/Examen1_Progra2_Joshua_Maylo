@@ -39,7 +39,7 @@ public class CLogin {
                         JOptionPane.showMessageDialog(null, "Bienvenido al sistema Admin bus");
                         interfaz ventana = new interfaz();
                         ventana.setVisible(true);
-                        ventana.setLocationRelativeTo(null);
+                        ventana.setLocationRelativeTo(null);                        
                     } else if (user.equals("AdminJefe") && contra.equals("admin123")) {
                         JOptionPane.showMessageDialog(null, "Bienvenido al sistema Admin Jefe");
                         AdminPanel ventana = new AdminPanel();
