@@ -97,6 +97,8 @@ public class AdminPanel extends JFrame {
 
         Cedula.setBounds(10, 10, 100, 30);
         TCedula.setBounds(140, 10, 200, 30);
+        TCedula.setBorder(new Borde(15));
+        TCedula.setOpaque(false);
         Nombre1.setBounds(10, 50, 100, 30);
         TNombre1.setBounds(140, 50, 200, 30);
         Nombre2.setBounds(10, 90, 120, 30);
