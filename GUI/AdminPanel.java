@@ -225,6 +225,11 @@ public class AdminPanel extends JFrame {
         Eliminar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                
+
+                EliminarUsuario(TCedula);
+
+
                 int selectedRow = tabla.getSelectedRow();
                 if (selectedRow >= 0) {
                     modelo.removeRow(selectedRow);
@@ -310,8 +315,6 @@ public class AdminPanel extends JFrame {
             TUsuario.setText(tabla.getValueAt(selectedRow, 5).toString());
             TContraseña.setText(tabla.getValueAt(selectedRow, 6).toString());
 
-            
-
         }
     }// fin del método Seleccionar
 
@@ -340,5 +343,21 @@ public class AdminPanel extends JFrame {
             JOptionPane.showMessageDialog(null, "Error al actualizar usuario" + e.toString());
         }
     }//
+
+    public void EliminarUsuario(JTextField TCedula) {
+        
+        POO.Conexion objetoconexion = new POO.Conexion();
+        String consulta = "DELETE FROM usuarios WHERE cedula=?;";
+
+        try {
+            CallableStatement cs = (CallableStatement) objetoconexion.EstablecerConexion().prepareCall(consulta); 
+
+            cs.setString(1, TCedula.getText());
+            cs.execute();
+            JOptionPane.showMessageDialog(null, "Usuario eliminado");
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al eliminar usuario" + e.toString());
+        }
+    }
 
 }// fin de la clase AdminPanel
