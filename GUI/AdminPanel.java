@@ -9,12 +9,14 @@ import java.sql.ResultSet;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import com.mysql.jdbc.CallableStatement;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
@@ -159,6 +161,9 @@ public class AdminPanel extends JFrame {
         Agregar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                AgregarUsuario(TCedula, TNombre1, TNombre2, TApellido1, TApellido2, TUsuario, TContraseña);
+
                 String[] datos = {
                     TCedula.getText(),
                     TNombre1.getText(),
@@ -223,4 +228,28 @@ public class AdminPanel extends JFrame {
         TApellido2.setText("");
         TCedula.setText("");
     } // fin del método clearTextFields
-} // fin de la clase AdminPanel
+
+    public void AgregarUsuario(JTextField TCedula, JTextField TNombre1, JTextField TNombre2, JTextField TApellido1, JTextField TApellido2, JTextField TUsuario, JTextField TContraseña) {
+        
+        POO.Conexion objetoconexion = new POO.Conexion();
+        String consulta = "insert into usuarios (cedula, nombre1, nombre2, apellido1, apellido2, login, clave) values(?,?,?,?,?,?,?);";
+
+        try {
+
+            CallableStatement call = (CallableStatement) objetoconexion.EstablecerConexion().prepareCall(consulta);
+            call.setString(1, TCedula.getText());
+            call.setString(2, TNombre1.getText());
+            call.setString(3, TNombre2.getText());
+            call.setString(4, TApellido1.getText());
+            call.setString(5, TApellido2.getText());
+            call.setString(6, TUsuario.getText());
+            call.setString(7, TContraseña.getText());
+            call.execute();
+
+            JOptionPane.showMessageDialog(null, "Usuario agregado");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al agregar usuario" + e.toString());
+        }
+}// fin del método AgregarUsuario
+
+}// fin de la clase AdminPanel
