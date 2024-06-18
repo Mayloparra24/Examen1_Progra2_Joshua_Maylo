@@ -30,6 +30,6 @@ public Double getTotalDia(){
 
 public String getFecha(){
     return reporte.getFecha();
-}//Este método sirve para obtener una fecha en tiempo real, es nada más decorativo
+}//este método sirve para obtener la fecha
+}//fin de la clase
 
-}

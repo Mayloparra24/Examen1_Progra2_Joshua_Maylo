@@ -11,7 +11,7 @@ public class Conexion {
     String Usuario = "UsuarioColaborador";
     String Contraseña = "Joshua20000..**";
     String BD = "SistemaPagoAutobus";
-    String IP = "10.153.158.49";
+    String IP = "10.153.156.206";
     String Puerto = "3306"; 
 
     String cadena = "jdbc:mysql://" + IP + ":" + Puerto + "/" + BD;

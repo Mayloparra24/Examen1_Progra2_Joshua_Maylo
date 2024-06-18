@@ -13,7 +13,6 @@ import POO.Arreglo;
 import POO.ReporteDelDia;
 
 
-
 public class Ucr extends JPanel{
         JButton Efectivo,PagoFacil;
     Color nuevo=new Color(21, 85, 223);
@@ -24,7 +23,6 @@ public class Ucr extends JPanel{
         Efectivo=new JButton();
         PagoFacil=new JButton();
         //inicialización
-    
     
             setSize(1000,700);
             setLayout(null);
@@ -61,9 +59,7 @@ public class Ucr extends JPanel{
         add(panel,BorderLayout.CENTER);
         repaint();
         revalidate();
-  
-        
-        
+
     }//método para intercambiar paneles
     public void eventos(){
         Efectivo.addActionListener(new ActionListener() {
@@ -97,4 +93,4 @@ public class Ucr extends JPanel{
             }
         });
     }
-}
+}//
